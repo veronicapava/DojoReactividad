@@ -1,17 +1,27 @@
-package com.sofka.reactividad.ejerciciouno;
+package com.sofka.reactividad.ejerciciouno.model;
 
 import java.util.Objects;
 
 public class Correo {
 
     private String correo;
+    private boolean correoEnviado;
 
     public Correo(String correo) {
         this.correo = correo;
+        this.correoEnviado = false;
     }
 
     public String getCorreo() {
         return correo;
+    }
+
+    public boolean isCorreoEnviado() {
+        return correoEnviado;
+    }
+
+    public void setCorreoEnviado(boolean correoEnviado) {
+        this.correoEnviado = correoEnviado;
     }
 
     public void setCorreo(String correo) {
@@ -22,6 +32,7 @@ public class Correo {
     public String toString() {
         return "Correo{" +
                 "correo='" + correo + '\'' +
+                ", correoEnviado=" + correoEnviado +
                 '}';
     }
 
@@ -30,11 +41,11 @@ public class Correo {
         if (this == o) return true;
         if (!(o instanceof Correo)) return false;
         Correo correo1 = (Correo) o;
-        return getCorreo().equals(correo1.getCorreo());
+        return isCorreoEnviado() == correo1.isCorreoEnviado() && getCorreo().equals(correo1.getCorreo());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getCorreo());
+        return Objects.hash(getCorreo(), isCorreoEnviado());
     }
 }
