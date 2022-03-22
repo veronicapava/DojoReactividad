@@ -17,27 +17,28 @@ public class CorreosService {
         return lista.distinct();
     }
 
-    public Flux<Correo> filtro(Flux<Correo> filtro){
-        return filtro.filter(x -> x.getCorreo().contains("@gmail.com"));
-            /* else {
-                if (x.getCorreo().contains("@hotmail.com")) {
-                    log.info("si hay correos hotmail");
-                } else {
-                    log.info("si hay correos outlook");
-                }
-            }*/
+    public Flux<Correo> filtro(Flux<Correo> filtro, String dominio){
+        return filtro.filter(x -> x.getCorreo().contains(dominio));
     }
 
-    public Flux<String> map(Flux<Correo> lista){
-        return lista.map(
-                correo -> correo.getCorreo()
-                        .toLowerCase(Locale.ROOT)
-
+    public Flux<String> condicionesCorreo(Flux<Correo> lista){
+        return lista.map(correo ->{
+                    if (!correo.getCorreo().contains("@")){
+                        correo.getCorreo().concat("@gmail.com");
+                    }
+                    return ("Correos listo para ser utilizados" + correo);
+                }
         );
     }
 
     public Mono<Long> cantidadDeCorreos(Flux<Correo> lista){
         lista.collectList();
         return lista.count();
+    }
+
+    public Mono<Long> cantidadDeCorreosPorDominio(Flux<Correo> correoFlux, String dominio){
+        String dominioListo = dominio.toLowerCase(Locale.ROOT);
+        correoFlux.collectList();
+        return correoFlux.filter(x -> x.getCorreo().contains(dominioListo)).count();
     }
 }

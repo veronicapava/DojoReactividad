@@ -14,6 +14,7 @@ public class Correos {
 
     public List<Correo> correos(){
         List<Correo> correos = new ArrayList<Correo>();
+        correos.add(new Correo("lalalala"));
         correos.add(new Correo("PaolaArrietaHerrera@gmail.com"));
         correos.add(new Correo("SalomonVendrellAgudo@outlook.com"));
         correos.add(new Correo("MarcelinoAzorinJordan@hotmail.com"));
