@@ -25,24 +25,23 @@ public class ReactividadApplication{
 
 		CorreosService correoService = new CorreosService();
 
-/*	    Flux<Correo> distinc = correoService.distinc(correoFlux);
+		Flux<Correo> distinc = correoService.distinc(correoFlux);
 		distinc.subscribe(correo -> log.info(correo.toString()));
 
 		Mono<Long> cantidadDeCorreos = correoService.cantidadDeCorreos(correoFlux);
 		cantidadDeCorreos.subscribe(correo -> log.info(correo.toString()));
 
 		Mono<Long> cantidadDeCorreosPorDominio = correoService.cantidadDeCorreosPorDominio(correoFlux, "hotmail");
-		cantidadDeCorreosPorDominio.subscribe(cantidad -> log.info("La cantidad de correo con el dominio indicado es: " + cantidad.toString()));*/
+		cantidadDeCorreosPorDominio.subscribe(cantidad -> log.info("La cantidad de correo con el dominio indicado es: " + cantidad.toString()));
 
 		Flux<String> mapeando = correoService.condicionesCorreo(correoFlux);
 		mapeando.subscribe(correo -> log.info(correo.toString()));
 
-		/*Flux<Correo> filtro = correoService.filtro(correoFlux,"@hotmail");
+		Flux<Correo> filtro = correoService.filtro(correoFlux,"@hotmail");
 		filtro.subscribe(correo -> log.info(correo.toString()));
 
 		Flux<Correo> cambiarEstado = correoService.correoEnviado(correoFlux);
 		cambiarEstado.subscribe(correo -> log.info(correo.toString()));
-*/
 	}
 
 }
