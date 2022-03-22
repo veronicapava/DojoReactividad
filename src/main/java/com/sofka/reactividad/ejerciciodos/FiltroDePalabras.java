@@ -10,7 +10,7 @@ import static java.util.stream.Collectors.joining;
 public class FiltroDePalabras {
 
     private List<String> malaPalabra = List.of("webon", "gonorrea", "malparido", "estupido", "maldito", "maldita",
-            "pirobo", "hijueputa");
+            "pirobo", "hijueputa", "monda", "verga");
 
 
     public Mono<String> corriegiendoPalabras(String frase){

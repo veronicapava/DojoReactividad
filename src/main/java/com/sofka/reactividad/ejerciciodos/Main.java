@@ -10,7 +10,7 @@ public class Main {
 
         Logger log = LoggerFactory.getLogger(ReactividadApplication.class);
 
-        String frase = "Hola boba hijueputa";
+        String frase = "kelly pero que monda";
         FiltroDePalabras frases = new FiltroDePalabras();
         frases.corriegiendoPalabras(frase).subscribe(x -> log.info(x.toString()));
     }
