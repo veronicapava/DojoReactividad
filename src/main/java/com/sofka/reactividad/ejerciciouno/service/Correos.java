@@ -1,6 +1,6 @@
 package com.sofka.reactividad.ejerciciouno.service;
 
-import com.sofka.reactividad.ReactividadApplication;
+import com.sofka.reactividad.ejerciciouno.ReactividadApplication;
 import com.sofka.reactividad.ejerciciouno.model.Correo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

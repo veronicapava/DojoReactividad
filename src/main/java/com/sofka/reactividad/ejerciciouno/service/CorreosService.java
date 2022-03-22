@@ -1,6 +1,6 @@
 package com.sofka.reactividad.ejerciciouno.service;
 
-import com.sofka.reactividad.ReactividadApplication;
+import com.sofka.reactividad.ejerciciouno.ReactividadApplication;
 import com.sofka.reactividad.ejerciciouno.model.Correo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +24,7 @@ public class CorreosService {
     public Flux<String> condicionesCorreo(Flux<Correo> lista){
         return lista.map(correo ->{
                     if (!correo.getCorreo().contains("@")){
-                        correo.getCorreo().concat("@gmail.com");
+                        correo.setCorreo(correo.getCorreo().concat("@gmail.com"));
                     }
                     return ("Correos listo para ser utilizados" + correo);
                 }
@@ -41,4 +41,15 @@ public class CorreosService {
         correoFlux.collectList();
         return correoFlux.filter(x -> x.getCorreo().contains(dominioListo)).count();
     }
+
+    public Flux<Correo> correoEnviado (Flux<Correo> correoFlux){
+        correoFlux.map(x -> {
+            if (x.isCorreoEnviado()==false){
+                x.setCorreoEnviado(true);
+            }
+            return  ("Estado cambiado: " + correoFlux);
+        });
+        return correoFlux;
+    }
+
 }
